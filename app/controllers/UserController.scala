@@ -6,21 +6,26 @@ import play.api.data.Forms._
 import play.api.mvc.{Action, Controller}
 
 class UserController extends Controller {
-//
-//  val passwordCheck: Mapping[String] = nonEmptyText()
-//    .verifying(passwordCheckConstraint)
+
+//   def validatePassword(password: String, confirmPassword: String): Boolean = {
+//     if (password==confirmPassword)
+//       true
+//     else
+//       false
+//   }
+
   val registerUser = Form(
     mapping(
       "firstName" -> nonEmptyText,
       "middleName" -> text,
       "lastName" -> nonEmptyText,
-      "userName" -> nonEmptyText,
+      "username" -> nonEmptyText,
       "password" -> nonEmptyText,
-      "confirmPassword" -> nonEmptyText,
+      "confirmPassword" -> nonEmptyText,   // .verifying(validatePassword(password , confirmPassword )),
       "contactNumber" -> nonEmptyText,
       "gender" -> text,
       "age" -> number(min = 18, max = 75),
-      "hobbies" -> list(text)
+      "hobbies" -> nonEmptyText
     )(RegisterUser.apply)(RegisterUser.unapply)
   )
 
@@ -35,13 +40,11 @@ class UserController extends Controller {
   def login = Action { implicit request =>
     logInUser.bindFromRequest.fold(
       formWithErrors => {
-        println(">>>>>>>>>>>>>>>>>>>>>>>>>."+formWithErrors.toString)
         BadRequest(views.html.signInPage())
       },
       userData => {
-        println(">>>>>>>>>>>>>>>>>>>>>>>>>."+userData.toString)
         val data = RegisterUser("Ramandeep","", "kaur","ramandeep","mountaindew","mountaindew","9910091476","Female",
-          23,List("Listening Music","Reading Novels"))
+          23,"Reading Novels")
 
         val newUser = models.LogInUser
         Ok(views.html.profilePage(data))
@@ -51,7 +54,7 @@ class UserController extends Controller {
 
   def profile = Action {
     Ok(views.html.profilePage(RegisterUser("Ramandeep","", "kaur","ramandeep","mountaindew","mountaindew","9910091476","Female",
-      23,List("Listening Music","Reading Novels")))).withSession("connected" -> "ramandeep")
+      23,"Reading Novels"))).withSession("connected" -> "ramandeep")
   }
 
   def signUp = Action {
@@ -71,8 +74,8 @@ class UserController extends Controller {
       },
       userData => {
         val newUser = models.RegisterUser("Ramandeep","", "kaur","ramandeep","mountaindew","mountaindew","9910091476","Female",
-          23,List("Listening Music","Reading Novels"))
-        Ok(views.html.profilePage(newUser))
+          23,"Reading Novels")
+        Ok(views.html.profilePage(newUser)).flashing("registeredUser"-> "Registration Done Successsfully")
       }
     )
   }

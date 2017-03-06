@@ -2,10 +2,10 @@
 
 <html>
 <head>
-    <title>JQuery Assignment</title>
+    <title>Coders' World</title>
     <link rel="icon"
-          type="image/png"
-          href="index.png">
+          type="image/jpg"
+          href="index.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -16,11 +16,6 @@
 </head>
 <script>
 
-$(document).ready(function(){
-   $('#mybtn').click(function(){
-   window.location.href='/profilePage.html';
-  });
- });
 
 $(document).ready(function () {
 
@@ -34,7 +29,7 @@ $(document).ready(function () {
                 required: true,
 
             },
-            pwd: {
+            password: {
                 required: true,
 
             },
@@ -44,8 +39,6 @@ $(document).ready(function () {
             },
             contact: {
                 required: true,
-                length: 10
-
             },
             gender: {
                 required: true,
@@ -175,41 +168,41 @@ $(document).ready(
                     <p>Examples for each concept is given</p>
                 </div>
             </div>
+        </ul>
     </div>
-
-
-    <form class=myform id="XForm" method="get">
+</div>
+    <form class=myform action="@routes.UserController.register" id="XForm" method="POST">
         <table>
             <h1 class=h1>Create a new account</h1>
             <tr>
-                <td><B><font size="3">First Name :</td> <td><input type="text" id="t1" name="fname" class="resizedTextbox" required></td>
+                <td><b><font size="4">First Name :</font></b></td> <td><input type="text" id="t1" name="firstName" class="resizedTextbox" required></td>
                 <br>
             </tr>
             <tr>
-                <td><b><font size="3">Middle Name :</td> <td><input type="text" id="t2" name="mname" class="resizedTextbox"></td><br>
+                <td><b><font size="4">Middle Name :</font></b></td> <td><input type="text" id="t2" name="middleName" class="resizedTextbox"></td><br>
             </tr>
             <tr>
-                <td><b><font size="3">Last Name :</td> <td><input type="text" id="t3" name="lname" class="resizedTextbox" required></td>
+                <td><b><font size="4">Last Name :</font></b></td> <td><input type="text" id="t3" name="lastName" class="resizedTextbox" required></td>
                 <br>
             </tr>
             <tr>
-                <td><b><font size="3">User Name:</td> <td><input type="text" id="t4" name="username" class="resizedTextbox"></td>
+                <td><b><font size="4">User Name:</font></b></td> <td><input type="text" id="t4" name="username" class="resizedTextbox" required></td>
                 <br>
             </tr>
             <tr>
-                <td><b><font size="3">Password :</td> <td><input type="password" id="t5" name="pwd" class="resizedTextbox"></td>
+                <td><b><font size="4">Password :</font></b></td> <td><input type="password" id="t5" name="password" class="resizedTextbox" required></td>
                 <br>
             </tr>
             <tr>
-                <td><b><font size="3">ReEnter Password:</td> <td><input type="password" id="t6" name="pwd" class="resizedTextbox"></td>
+                <td><b><font size="4">ReEnter Password:</font></b></td> <td><input type="password" id="t6" name="confirmPassword" class="resizedTextbox"></td>
                 <br>
             </tr>
             <tr>
-                <td><b><font size="3">Contact No.:</td> <td><input type="text" id="t7" name="contact" class="resizedTextbox"></td>
+                <td><b><font size="4">Contact No.:</font></b></td> <td><input type="text" id="t7" name="contactNumber" class="resizedTextbox"></td>
                 <br>
             </tr>
             <tr>
-                <td><b><font size="3">Gender: </td><td>
+                <td><b><font size="4">Gender: </font></b></td><td>
                 <select name="gender" id="gender" class="resizedTextbox">
                     <option>Male</option>
                     <option>Female</option>
@@ -219,19 +212,20 @@ $(document).ready(
             </tr>
             <br>
             <tr>
-                <td><b><font size="3">Age :</td> <td><input type="text" id="t9" name="age" class="resizedTextbox"></td>
+                <td><b><font size="4">Age :</font></b></td> <td><input type="text" id="t9" name="age" class="resizedTextbox"></td>
                 <br>
             </tr>
-
+            <tr>
+                <td><b><font size="4">Hobbies :</font></b></td> <td><input type="text" id="t10" name="hobbies" class="resizedTextbox"></td>
+            </tr>
 
 
 
             <td><button type="SUBMIT" class="button" id="mybtn">SIGN UP</button></td>
-            </tr>
+
         </table>
 
     </form>
-
 
 </body>
 </html>

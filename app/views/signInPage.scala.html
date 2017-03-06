@@ -2,26 +2,36 @@
 
 <html>
 <head>
-    <title></title>
+    <title>Coders' World</title>
     <link rel="icon"
-          type="image/png"
-          href="index.png">
+          type="image/jpg"
+          href="index.jpg">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<link rel="shortcut icon" type="image/jpg" href="@routes.Assets.versioned("images/image.jpg")">-->
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
 
 
 </head>
 <script>
 
-$(document).ready(
-    function(){
-$('#mybtn').click(function(){
-   window.location.href='@routes.UserController.login';
-});
-});
+$(document).ready(function () {
+
+    $('#Xform').validate({ // initialize the plugin
+        rules: {
+            name: {
+                required: true,
+
+            },
+            pwd: {
+                required: true,
+
+            }
+    }
+  })
+  });
 $(document).ready(
     function(){
         $('#dropdown').click(
@@ -134,19 +144,21 @@ $(document).ready(
                     <p>Examples for each concept is given</p>
                 </div>
             </div>
+        </ul>
     </div>
 
 
-    <form class="myform" action="/login" method="POST">
+    <form class="myform" id="Xform" action="/login" method="POST">
         <table>
             <h1 class=h1>Coders' World</h1>
             <tr>
-                <td><B><font size="5">Name :</td> <td><input type="text" id="t1" name="name" class="resizedTextbox"></td><br>
+                <td><B><font size="5">Name : </font></B></td> <td><input type="text" id="t1" name="username" class="resizedTextbox" required></td><br>
             </tr>
             <tr>
-                <td><b><font size="5">Password :</td> <td><input type="password" id="t2" name="pwd" class="resizedTextbox"></td>
+                <td><b><font size="5">Password :</font></b></td> <td><input type="password" id="t2" name="password" class="resizedTextbox" required></td><br>
                 <br>
             </tr>
+
             <td><button type="submit" class="button" id="mybtn">SIGN IN</button></td>
             </tr>
         </table>
@@ -156,6 +168,6 @@ $(document).ready(
 
 
 
-
+</div>
 </body>
 </html>
