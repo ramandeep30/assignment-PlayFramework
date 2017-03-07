@@ -73,9 +73,11 @@ class UserController extends Controller {
         BadRequest(views.html.registrationPage())
       },
       userData => {
-        val newUser = models.RegisterUser("Ramandeep","", "kaur","ramandeep","mountaindew","mountaindew","9910091476","Female",
-          23,"Reading Novels")
-        Ok(views.html.profilePage(newUser)).flashing("registeredUser"-> "Registration Done Successsfully")
+//        val newUser = models.RegisterUser("Ramandeep","", "kaur","ramandeep","mountaindew","mountaindew","9910091476","Female",
+//          23,"Reading Novels")
+//
+
+          Ok(views.html.profilePage(userData)).flashing("registeredUser"-> "Registration Done Successsfully")
       }
     )
   }
