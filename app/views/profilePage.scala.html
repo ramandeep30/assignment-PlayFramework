@@ -27,7 +27,25 @@
 </div>
 <br>
 <h1 class="h1"><center>WELCOME TO CODERS' WORLD</center></h1>
-<br>
+<!--<form class=myform action="@routes.HomeController.index" id="XForm" method="POST">-->
+
+<!--<table>-->
+    <!--<tr>-->
+        <!--<td><B><font size="5">Name : </font></B></td> <td><B><font size="5"> @userData.username </font></B></td>-->
+    <!--</tr>-->
+
+    <!--<tr>-->
+        <!--<td><B><font size="5">Gender : </font></B></td> <td><input type="text" value=@userData.gender class="resizedTextbox"></td><br>-->
+    <!--</tr>-->
+
+    <!--<tr>-->
+        <!--<td><B><font size="5">Age : </font></B></td> <td><input type="text" value=@userData.age class="resizedTextbox"></td><br>-->
+    <!--</tr>-->
+
+    <!--<td><button type="SUBMIT" class="button" id="mybtn">LOG OUT</button></td>-->
+<!--</table>-->
+<form class=myform action="@routes.HomeController.index" id="XForm">
+
 <h2>User-Name: @userData.username</h2>
 <br>
 <h2>Gender: @userData.gender</h2>
@@ -35,3 +53,13 @@
 <h2>Age: @userData.age</h2>
 <br>
 <h2>Hobbies: @userData.hobbies</h2>
+<br>
+@if(userData.isAdmin==true){
+    <h2><a href="@routes.AuthorityController.manageAuthority" style="text-decoration:none;">Manage Users</a><h2>
+}
+
+<div>
+    <button type="submit" class="button" id="mybtn">LOG OUT</button>
+</div>
+
+</form>

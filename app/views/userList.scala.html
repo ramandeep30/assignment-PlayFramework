@@ -1,0 +1,40 @@
+@(listUser: List[models.RegisterUser])
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @* Here's where we render the page title `String`. *@
+    <title>UserList Page</title>
+
+    <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/favicon.png")">
+    <script src="@routes.Assets.versioned("javascripts/hello.js")" type="text/javascript"></script>
+    <link rel="icon"
+       type="image/png"
+       href="index.png">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--<link rel="shortcut icon" type="image/jpg" href="@routes.Assets.versioned("images/image.jpg")">-->
+    <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/style.css")">
+
+</head>
+    <body>
+    @if(listUser.size==0){
+        <h1>No user Found</h1>
+    }
+        <table>
+            @for(user <- listUser){
+                <tr>
+                    <td>
+                        @user.username
+                    </td>
+                    <td>
+                        Revoked: @user.isRevoked
+                    </td>
+                </tr>
+            }
+        </table>
+    </body>
+</html>
